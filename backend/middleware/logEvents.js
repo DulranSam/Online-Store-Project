@@ -18,6 +18,7 @@ async function logEvents(msg,logFile){
 };
 
 async function Log(req,res,next){
+    myEmitter.setMaxListeners(15);
     myEmitter.on("log",(msg,logName)=>{
         logEvents(msg,logName)
     });

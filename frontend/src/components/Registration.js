@@ -7,6 +7,7 @@ export default function Register() {
     username: "",
     password: "",
     mail: "",
+    bio: "",
     photo: "",
   });
   const [response, setResponse] = useState("");
@@ -23,16 +24,20 @@ export default function Register() {
       datax.append("username", data.username);
       datax.append("password", data.password);
       datax.append("mail", data.mail);
-
+      datax.append("bio", data.bio);
       datax.append("photo", data.photo);
 
-      const r = await Axios.post("http://localhost:8000/register", datax);
-      if (r.status === 400) {
-        setResponse("Required credentials not filled");
+      const r = await Axios.post("http://localhost:8000/register", datax, {
+        headers: {
+          ContentType: "multipart/form-data",
+        },
+      });
+      if (r.status === 201) {
+        setResponse("User created");
       } else if (r.status === 409) {
         setResponse("User already exists");
-      } else if (r.status === 201) {
-        setResponse("User created");
+      } else if (r.status === 400) {
+        setResponse("Required credentials not filled");
       } else {
         setResponse("Internal Server Error");
       }
@@ -69,6 +74,14 @@ export default function Register() {
           value={data.mail}
           type="email"
           placeholder="Enter mail"
+        ></input>
+        <input
+          onChange={(e) => {
+            setData({ ...data, bio: e.target.value });
+          }}
+          value={data.bio}
+          placeholder="Enter Bio"
+          type="text"
         ></input>
         <input
           onChange={(e) => {

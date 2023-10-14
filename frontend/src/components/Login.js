@@ -3,8 +3,10 @@ import Axios from "axios";
 import "./Login.css";
 
 export default function Login() {
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const[data,setData] = useState({
+    username:"",
+    password:""
+  });
   const [response, setResponse] = useState("");
 
   async function handleLogin(e) {
@@ -12,8 +14,8 @@ export default function Login() {
 
     try {
       const formData = new FormData();
-      formData.append("username", username);
-      formData.append("password", password);
+      formData.append("username", data.username);
+      formData.append("password", data.password);
 
       const response = await Axios.post(
         "http://localhost:8000/register/login",
@@ -45,17 +47,17 @@ export default function Login() {
       <h1>Login</h1>
       <input
         onChange={(e) => {
-          setUsername(e.target.value);
+          setData({...data,username:e.target.value});
         }}
-        value={username}
+        value={data.username}
         type="text"
         placeholder="Enter Username"
       />
       <input
         onChange={(e) => {
-          setPassword(e.target.value);
+          setData({...data,password:e.target.value});
         }}
-        value={password}
+        value={data.password}
         type="password"
         placeholder="Enter password"
       />

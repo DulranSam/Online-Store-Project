@@ -120,7 +120,7 @@ async function Login(req, res) {
 
 async function Connect() {
   try {
-    const client = new MongoClient(cluster, { useNewUrlParser: true });
+    const client = new MongoClient(cluster);
     await client.connect();
     db = client.db();
     console.log("Connected Data Verifiation");

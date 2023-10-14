@@ -10,6 +10,7 @@ export default function StoreFunctions() {
     photo: null, 
   });
   const [response, setResponse] = useState("");
+  const [exists, setExists] = useState("");
   const PhotoField = useRef();
 
   async function addItems(e) {
@@ -20,15 +21,16 @@ export default function StoreFunctions() {
       Datax.append("description", data.description);
       Datax.append("quantity", data.quantity);
       Datax.append("extra", data.extra);
-    for (let i =  0 ; i < data.photo.length ; i++){
-        Datax.append("photo", data.photo);
-    }
+
       
 
-      const r = await Axios.post("http://localhost:8000/additem", Datax,{headers:{"Content-Type":"multipart/form-data"}});
+      const r = await Axios.post("http://localhost:8000/verify", Datax,{headers:{"Content-Type":"multipart/form-data"}});
       if (r.status === 201) {
         setResponse("Item Added");
-      } else if (r.status === 409 || r.status === 400) {
+      } else if (r.status === 409 ) {
+        setExists("Item already exists");
+      }
+      else if(r.status===400){
         setResponse("Required Fields not filled");
       } else {
         setResponse("Internal Server Error");
@@ -82,9 +84,15 @@ export default function StoreFunctions() {
         />
         <button type="submit" style={{ width: "10vw", height: "10vh" }}>
           Add Item
+          <p>{exists}</p>
         </button>
       </form>
       {response && <p>{response}</p>}
     </div>
   );
-}
+
+
+
+};
+
+
