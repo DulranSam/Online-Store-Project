@@ -1,6 +1,8 @@
 import React, { useState} from "react";
 import Axios from "axios";
+import {Routes, Route, useNavigate} from 'react-router-dom';
 import "./Login.css";
+import StoreFunctions from "./StoreFunctions";
 
 export default function Login() {
   const[data,setData] = useState({
@@ -8,6 +10,8 @@ export default function Login() {
     password:""
   });
   const [response, setResponse] = useState("");
+
+
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -25,17 +29,17 @@ export default function Login() {
             "Content-Type": "multipart/form-data",
           },
         }
-      );
-
-      if (response.status === 200) {
-        setResponse("Authorized");
-      } else if (response.status === 401) {
-        setResponse("Unauthorized");
-      } else if (response.status === 400) {
-        setResponse("Username and password missing");
-      } else {
-        setResponse("Server Error");
-      }
+      ).then((r)=>{
+        if(r.status===200){
+          setResponse("Authorized")
+        }else if(r.status===401){
+          setResponse("Unauthorized")
+        }else if (r.status===400){
+          setResponse("Username and password missing");
+        }else{
+          setResponse("Server Error");
+        }
+      });
     } catch (error) {
       console.error(error);
    

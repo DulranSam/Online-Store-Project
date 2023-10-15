@@ -21,7 +21,7 @@ export default function StoreFunctions() {
       Datax.append("description", data.description);
       Datax.append("quantity", data.quantity);
       Datax.append("extra", data.extra);
-
+      
       
 
       const r = await Axios.post("http://localhost:8000/verify", Datax,{headers:{"Content-Type":"multipart/form-data"}});

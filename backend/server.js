@@ -16,7 +16,7 @@ const { Log } = require("./middleware/logEvents");
 app.use(express.json());
 app.use(
   cors({
-    origin: true /*"http://192.168.1.13:3000" || "http://localhost:3000"*/,
+    origin:"http://192.168.1.13:3000" || "http://localhost:3000",
   }) //for react proj
 );
 app.use(bodyParser.urlencoded({ extended: true }));

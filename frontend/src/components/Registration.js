@@ -15,7 +15,7 @@ export default function Register() {
 
   async function Register(e) {
     e.preventDefault();
-    if (setResponse.length !== 0) {
+    if (response.length !== 0) {
       setResponse("");
     }
     try {
@@ -25,13 +25,16 @@ export default function Register() {
       datax.append("password", data.password);
       datax.append("mail", data.mail);
       datax.append("bio", data.bio);
-      datax.append("photo", data.photo);
+      if (data.photo) {
+        datax.append("photo", data.photo);
+      }
 
       const r = await Axios.post("http://localhost:8000/register", datax, {
         headers: {
-          ContentType: "multipart/form-data",
+          "Content-Type": "multipart/form-data",
         },
       });
+
       if (r.status === 201) {
         setResponse("User created");
       } else if (r.status === 409) {
@@ -41,6 +44,7 @@ export default function Register() {
       } else {
         setResponse("Internal Server Error");
       }
+
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -94,7 +98,7 @@ export default function Register() {
         <button
           type="submit"
           style={{ width: "10vw", height: "10vh" }}
-          disable={loading === true ? true : false}
+          disabled={loading === true ? true : false}
         >
           Create User
         </button>
