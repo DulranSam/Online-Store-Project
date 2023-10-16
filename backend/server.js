@@ -12,6 +12,7 @@ const apiX = require("./routes/apiX");
 const userActions = require("./routes/userActions");
 const verifyData = require("./routes/verifyData");
 const { Log } = require("./middleware/logEvents");
+const payment = require("./routes/payment");
 
 app.use(express.json());
 app.use(
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(Log);
 app.use("/register", userActions);
+app.use("/pay",payment);
 app.use("/verify", verifyData);
 app.use("/api", apiX);
 

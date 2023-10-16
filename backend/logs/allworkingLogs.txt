@@ -735,3 +735,9 @@
 20231015	19:04:12	01a03cfe-5f66-4c25-a533-95a9946c262e	/register	POST	http://localhost:3000
 20231015	19:04:12	b0717a21-6dce-4332-9e39-a5479e88fc19	/register	POST	http://localhost:3000
 20231015	19:04:12	d3b2cc89-aa3a-480f-9b7a-1e3b20a7f50b	/register	POST	http://localhost:3000
+20231016	16:37:24	66ba0ad0-6fca-46bd-ae5b-47b7b7c1c9c6	/pay	GET	undefined
+20231016	16:37:24	0557ca98-7153-4c10-a42e-f764235f22e5	/images/icons/gear.png	GET	undefined
+20231016	16:37:24	bc71fb11-7251-4e7b-a94e-fcc92ac17fe6	/images/icons/gear.png	GET	undefined
+20231016	16:37:24	8e28c46b-f309-4445-a0f4-ac8165d929e9	/favicon.ico	GET	undefined
+20231016	16:37:24	0b4b5488-d1d7-41cd-9d8c-a4eb560635ec	/favicon.ico	GET	undefined
+20231016	16:37:24	b96f7549-2524-48b2-a524-47504dc9542f	/favicon.ico	GET	undefined
