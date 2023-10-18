@@ -29,12 +29,12 @@ router
       if (!title || !description || !quantity)
         return res
           .status(400)
-          .json({ Error: "Please enter tile , description and quantity" });
+          .json({ Error: "Please enter title , description and quantity" });
       const duplicate = await collection.findOne({
         title: title,
       });
       if (duplicate) {
-        return res.status(409).json({ Error: "Item already exists" });
+        return res.status(409).json({ Error: `${title} already exists` });
       } else {
         let photofilename;
         if (req.file) {
@@ -56,7 +56,7 @@ router
 
         console.log(newItem);
         await newItem.save();
-        res.status(201).json({ Alert: "Item Added" });
+        res.status(201).json({ Alert: `${title} Added to store` });
       }
     } catch (error) {
       console.log(error);

@@ -13,6 +13,8 @@ router
   .route("/")
   .post(limitSearch,apiHandler.conversion);
 
+router.route("/sub").post(apiHandler.PredictGender)
+
 
   router.route("/translate").post(apiHandler.translator).get(apiHandler.getLangs)
 

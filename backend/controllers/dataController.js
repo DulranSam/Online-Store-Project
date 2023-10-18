@@ -53,7 +53,7 @@ async function deleteItems(req,res){
       } else {
         return res
           .status(200)
-          .json({ Alert: `Item ID ${title} has been deleted` });
+          .json({ Alert: `Item ${title} has been deleted` });
       }
     }
 };

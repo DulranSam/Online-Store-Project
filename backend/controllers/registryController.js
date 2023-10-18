@@ -61,7 +61,7 @@ async function updateUsers(req, res) {
     if (!result) {
       res.status(401).json({ Alert: "User not found" });
     } else {
-      res.status(200).json({ Alert: `User ${id} updated` });
+      res.status(200).json({ Alert: `User ${username} updated` });
     }
   } catch (error) {
     console.error(error);

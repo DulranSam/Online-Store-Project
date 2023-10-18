@@ -7,7 +7,7 @@ class Emitter extends EventEmitter{};
 const myEmitter = new Emitter();
 
 async function logEvents(msg,logFile){
-    const dateEvent = `${format(new Date,"yyyyMMdd\tHH:mm:ss")}`
+    const dateEvent = `${format(new Date,"yyyy\tMM\tdd\tHH:mm:ss")}`
     const logEvent = `${dateEvent}\t${uuid()}\t${msg}\n`
 
     if(!fs.existsSync(path.join(__dirname,"..","logs"))){
@@ -18,7 +18,7 @@ async function logEvents(msg,logFile){
 };
 
 async function Log(req,res,next){
-    myEmitter.setMaxListeners(15);
+    myEmitter.setMaxListeners(25);
     myEmitter.on("log",(msg,logName)=>{
         logEvents(msg,logName)
     });
