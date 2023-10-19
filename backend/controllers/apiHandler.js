@@ -86,34 +86,6 @@ async function getLangs(req, res) {
   }
 }
 
-async function PredictGender(req, res) {
-  const { search } = req.body;
-  try {
-    const r = await Axios.post(
-      "https://chatgpt-api8.p.rapidapi.com/",
-      {
-        data: [
-          {
-            content: search,
-            role: 'user'
-          }
-        ]
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'X-RapidAPI-Key': '6ab6426498msh3a8b554f47aecdap1a6bd3jsn68aa72332bfc',
-          'X-RapidAPI-Host': 'chatgpt-api8.p.rapidapi.com'
-        }
-      }
-    );
 
-    // Do something with the response 'r' here
-    res.json(r.data);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'An error occurred' });
-  }
-}
 
-module.exports = { conversion, translator, getLangs, PredictGender };
+module.exports = { conversion, translator, getLangs};

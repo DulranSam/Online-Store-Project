@@ -88,10 +88,7 @@ async function Login(req, res) {
       const match = bcrypt.compareSync(password, verify.password);
       if (match) {
      
-        return res.status(200).json({ Alert: `User ${username} Logged in` });
-        
-
-        /*
+      
         const accessToken = jwt.sign(
           {
             username: verify,
@@ -107,7 +104,9 @@ async function Login(req, res) {
           refreshToken,
           { expiresIn: "1d" }
         );
-        */
+        res.cookie("jwt",refreshToken,{httpOnly:true,maxAge:24*60*60*1000});
+        res.json(accessToken);
+        return res.status(200).json({Alert:`User ${username} logged in`})
       } else {
         return res.status(401).json({ Error: "Unauthorized" });
       }

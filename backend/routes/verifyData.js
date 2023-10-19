@@ -6,6 +6,7 @@ const sharp = require("sharp");
 const multer = require("multer");
 const storeModel = require("../models/store");
 const dataController = require("../controllers/dataController");
+const verifyJWT = require("../middleware/verifyJWT");
 let db;
 
 const cluster = process.env.CLUSTER;

@@ -6,14 +6,7 @@ const nodemailer = require("nodemailer");
 router
   .route("/")
   .get( async (req, res) => {
-    var transport = nodemailer.createTransport({
-        host: "sandbox.smtp.mailtrap.io",
-        port: 2525,
-        auth: {
-          user: "ede0b438a311fb",
-          pass: "********0e39"
-        }
-      });
+    
   })
   .post( async (req, res) => {
     const { card, holder, defaddress, address1, postalcode, phonenumber } =
