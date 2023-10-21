@@ -1,27 +1,29 @@
-import { useState } from "react";
+import { useState } from "react"
 import Axios from "axios";
 
-export default function Home() {
-  const [items, setItems] = useState([]);
-  const [error, setError] = useState(null);
+export default function AllItems(){
+    const [items,setItems] = useState([]);
 
-  async function getItems(e) {
-    e.preventDefault();
-    try {
-      const response = await Axios.get("http://localhost:8000/verify");
-      setItems(response.data);
-    } catch (error) {
-      setError(error);
-    }
-  }
-
-  return (
-    <div className="container">
-      <form onSubmit={getItems}>
+    async function StoreItems(e){
+        e.preventDefault();
+        try{
+            const r = await Axios.get("http://localhost:8000/verify").then((r)=>{
+                setItems(r.data);
+            }).catch((e)=>{
+                setItems(e.response.data)
+            }).finally(()=>{
+                console.log("Got store items (or not)");
+            })
+        }catch(error){
+            console.log(error)  ;
+        }
+    };
+    return(
+        <div className="container">
+        <form onSubmit={StoreItems}>
         <p>{JSON.stringify(items)}</p>
-        {error && <p>Error: {error.message}</p>}
-        <button type="submit">Get Items</button>
-      </form>
-    </div>
-  );
-}
+        <button type="submit">Show all items</button>
+        </form>
+        </div>
+    )
+};

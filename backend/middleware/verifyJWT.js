@@ -1,3 +1,4 @@
+/*
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const ats = process.env.ACCESS_TOKEN;
@@ -17,3 +18,4 @@ async function verifyJWT(req, res, next) {
 }
 
 module.exports = { verifyJWT };
+*/

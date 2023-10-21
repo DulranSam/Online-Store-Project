@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState,useReducer, useRef} from "react";
 import Axios from "axios";
 import "./Login.css";
 
@@ -8,6 +8,9 @@ export default function Login() {
     password:""
   });
   const [response, setResponse] = useState("");
+  const [loading,setLoading] = useReducer((loading)=>!loading,false);
+  const username = useRef();
+  const password = useRef();
 
 
 
@@ -15,6 +18,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
+      setLoading(true);
       const formData = new FormData();
       formData.append("username", data.username);
       formData.append("password", data.password);
@@ -29,8 +33,10 @@ export default function Login() {
         }
       ).then((response)=>{
         if(response.status===200){
+          alert(`${data.username} logged in`);
           setResponse("Authorized")
         }else if(response.status===401){
+          alert(`${data.username} Unauthorized`);
           setResponse("Unauthorized")
         }else if (response.status===400){
           setResponse("Username and password missing");
@@ -38,9 +44,14 @@ export default function Login() {
           setResponse("Server Error");
         }
       });
+      setLoading(false);
     } catch (error) {
       console.error(error);
    
+    }
+    finally{
+      username.current.value ="";
+      password.current.value = "";
     }
   }
 
@@ -48,6 +59,7 @@ export default function Login() {
     <form onSubmit={handleLogin}>
       <h1>Login</h1>
       <input
+      ref={username}
         onChange={(e) => {
           setData({...data,username:e.target.value});
         }}
@@ -65,7 +77,7 @@ export default function Login() {
       />
       <p>{response}</p>
       <button type="submit" style={{ width: "10vw", height: "10vh" }}>
-        Submit
+        {loading===true? "Loading..." : "Submit"}
       </button>
     </form>
   );

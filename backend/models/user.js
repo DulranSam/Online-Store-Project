@@ -14,6 +14,12 @@ const userSchema = new mongoose.Schema(
       default: "",
       trim: true,
     },
+    confirmpass:{
+      type: String,
+      required: true,
+      default: "",
+      trim: true,
+    },
     mail: {
       type: String,
       required: true,

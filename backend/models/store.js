@@ -28,6 +28,65 @@ const storeSchema = new mongoose.Schema({
         unique:false,
         default: "",
         trim: true,
+      },defAddress:{
+        shippingAd:{
+            ad:{
+                type: String,
+                unique:false,
+                default: "",
+                trim: true,
+            },
+            city:{
+                type: String,
+                unique:false,
+                default: "",
+                trim: true,
+            },
+            state:{
+                type: String,
+                unique:false,
+                default: "",
+                trim: true,
+            },
+            zip:{
+                type:Number,
+                unique:false,
+                default: "",
+                trim: true,
+            }
+        },
+        billingAd:{
+            ad:{
+                type: String,
+                unique:false,
+                default: "",
+                trim: true,
+            },
+            city:{
+                type: String,
+                unique:false,
+                default: "",
+                trim: true,
+            },
+            state:{
+                type: String,
+                unique:false,
+                default: "",
+                trim: true,
+            },
+            zip:{
+                type:Number,
+                unique:false,
+                default: "",
+                trim: true,
+            }
+        }
+      },
+      orders:{
+        type: Number,
+        unique:false,
+        default: "",
+        trim: true,
       }
 },{timestamps:true});
 

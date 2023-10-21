@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Register from "./components/Registration";
 import Login from "./components/Login";
 import StoreFunctions from "./components/StoreFunctions";
 import UI from "./components/UI";
-import Home from "./components/Home";
+import AllItems from "./components/Home";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/store" element={<StoreFunctions></StoreFunctions>}></Route>
         <Route path="/buy" element={<UI></UI>}></Route>
-        <Route path="/items" element={<Home></Home>}></Route>
+        <Route path="/items" element={<AllItems></AllItems>}></Route>
       </Routes>
     </BrowserRouter>
   );
@@ -35,6 +35,15 @@ function Main() {
       <button onClick={()=>{navigate("/items")}}>Items</button>
     </div>
   );
+};
+
+export function Logged(){
+  const [user,setUser] = useState();
+  if(!user){
+    return <Register setUser={setUser(user)}></Register>
+  }else{
+    return <Login user={user}></Login>
+  }
 }
 
 
