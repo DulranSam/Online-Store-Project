@@ -2,7 +2,7 @@ import React, { useState,useReducer, useRef} from "react";
 import Axios from "axios";
 import "./Login.css";
 
-export default function Login() {
+export default function Login(props) {
   const[data,setData] = useState({
     username:"",
     password:""
@@ -33,7 +33,7 @@ export default function Login() {
         }
       ).then((response)=>{
         if(response.status===200){
-          alert(`${data.username} logged in`);
+          alert(`Welcome back ${props.user}`);
           setResponse("Authorized")
         }else if(response.status===401){
           alert(`${data.username} Unauthorized`);

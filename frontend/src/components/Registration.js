@@ -2,7 +2,7 @@ import { useState } from "react";
 import Axios from "axios";
 import "./Registration.css";
 
-export default function Register() {
+export default function Register(props) {
   const [data, setData] = useState({
     username: "",
     password: "",

@@ -3,6 +3,7 @@ require("dotenv").config();
 const API = process.env.API_KEY;
 const HOST = process.env.API_HOST;
 
+/* Trial Period has EXPIRED (Yet to find a FREE substitue API)
 async function conversion(req, res) {
   try {
     const { from, to, v } = req.body;
@@ -31,6 +32,7 @@ async function conversion(req, res) {
       .json({ Alert: "An error occurred while processing your request" });
   }
 }
+*/
 
 async function translator(req, res) {
   const { q, t, s } = req.body;

@@ -15,7 +15,7 @@ export default function AllItems(){
                 console.log("Got store items (or not)");
             })
         }catch(error){
-            console.log(error)  ;
+            console.log(error);
         }
     };
     return(

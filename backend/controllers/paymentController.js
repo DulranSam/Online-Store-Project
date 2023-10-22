@@ -1,7 +1,7 @@
 
 async function getPayments(req,res){
     res.json({Alert:"Payment Route"})
-}
+};
 
 async function createPayment(req,res){
         const { card, holder, defaddress, address1, postalcode, phonenumber } =
@@ -13,7 +13,8 @@ async function createPayment(req,res){
             card,
             holder,
             defaddress,
-            address1,
+            tempAddress,
+            billingAd,
             postalcode,
             phonenumber,
           });
