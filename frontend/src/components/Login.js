@@ -1,6 +1,6 @@
-import React, { useState,useReducer, useRef} from "react";
-import Axios from "axios";
+import React, { useState} from "react";
 import "./Login.css";
+import Axios from "axios";
 
 export default function Login(props) {
   const[data,setData] = useState({
@@ -8,13 +8,10 @@ export default function Login(props) {
     password:""
   });
   const [response, setResponse] = useState("");
-  const [loading,setLoading] = useReducer((loading)=>!loading,false);
-  const username = useRef();
-  const password = useRef();
+  const [loading,setLoading] = useState(false);
 
 
-
-  async function handleLogin(e) {
+  async function Login(e) {
     e.preventDefault();
 
     try {
@@ -50,35 +47,47 @@ export default function Login(props) {
    
     }
     finally{
-      username.current.value ="";
-      password.current.value = "";
+      data.username.current.value ="";
+      data.password.current.value = "";
     }
   }
 
   return (
-    <form onSubmit={handleLogin}>
+    <div className="container">
+    <div className="login">
       <h1>Login</h1>
-      <input
-      ref={username}
-        onChange={(e) => {
-          setData({...data,username:e.target.value});
-        }}
-        value={data.username}
-        type="text"
-        placeholder="Enter Username"
-      />
-      <input
-        onChange={(e) => {
-          setData({...data,password:e.target.value});
-        }}
-        value={data.password}
-        type="password"
-        placeholder="Enter password"
-      />
-      <p>{response}</p>
-      <button type="submit" style={{ width: "10vw", height: "10vh" }}>
-        {loading===true? "Loading..." : "Submit"}
-      </button>
-    </form>
+      <form action="loginForm" onSubmit={Login}>
+        <div className="fields">
+          <p>Username : </p>
+          <input
+            type="text"
+            placeholder="Enter Username"
+            onChange={(e) => {
+              setData({...data,username:e.target.value});
+            }}
+            value={data.username}
+            className="usernameval"
+          />
+          <p>Password : </p>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            onChange={(e) => {
+              setData({...data,password:e.target.value});
+            }}
+            value={data.password}
+            className="passwordval"
+            required=""
+          />
+          <br />
+          <p>{response}</p>
+          <button type="submit" style={{ width: "10vw", height: "10vh" }}>
+            {loading===true? "Loading..." : "Login"}</button>
+          <br />
+          </div>
+      </form>
+    </div>
+  </div>
+  
   );
 }

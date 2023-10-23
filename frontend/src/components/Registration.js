@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Axios from "axios";
-import "./Registration.css";
 
 export default function Register(props) {
   const [data, setData] = useState({
@@ -100,7 +99,7 @@ export default function Register(props) {
           style={{ width: "10vw", height: "10vh" }}
           disabled={loading === true ? true : false}
         >
-          Create User
+          {loading===true ? "Loading..." : "Register"}
         </button>
       </form>
     </div>

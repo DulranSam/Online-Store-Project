@@ -9,9 +9,11 @@ const limitSearch = rateLimit({
   limit: 99,
 });
 
+/*
 router
   .route("/")
   .post(limitSearch,apiHandler.conversion);
+*/
 
 
   router.route("/translate").post(apiHandler.translator).get(apiHandler.getLangs)

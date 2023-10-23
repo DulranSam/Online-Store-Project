@@ -90,4 +90,4 @@ async function getLangs(req, res) {
 
 
 
-module.exports = { conversion, translator, getLangs};
+module.exports = {translator, getLangs};
