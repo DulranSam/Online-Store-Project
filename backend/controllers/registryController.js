@@ -97,16 +97,15 @@ async function Login(req, res) {
           { expiresIn: "30s" }
         );
 
-        const refreshtoken = jwt.sign(
+        const refreshTokenx = jwt.sign(
           {
             username: verify,
           },
           refreshToken,
           { expiresIn: "1d" }
         );
-        res.cookie("jwt",refreshToken,{httpOnly:true,maxAge:24*60*60*1000});
-        res.json(accessToken);
-        return res.status(200).json({Alert:`User ${username} logged in`})
+        res.cookie("jwt",refreshTokenx,{httpOnly:true,maxAge:24*60*60*1000});
+        return res.status(200).json({Alert:`User ${username} logged in, Token ${accessToken}`})
       } else {
         return res.status(401).json({ Error: "Unauthorized" });
       }

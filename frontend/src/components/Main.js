@@ -21,11 +21,11 @@ export default function Main() {
                   <a href="#prod">Products</a>
                 </li>
                 <li>
-                <Link to="/login">Register</Link>
+                <Link to="/login">Login</Link>
                 </li>
               </ul>
             </nav>
-            <img src="V.png" alt="v" className="vpng" />
+            <img src="../images/V.png" alt="v" className="vpng" />
             <div className="Homedet">
               <h2>Welcome to Veloxal!</h2>
               <br />
@@ -36,12 +36,12 @@ export default function Main() {
               <h1 className="pek">Products</h1>
               <h2>Our Top Items!</h2>
               <p>
-                Disclaimer: I do NOT own any of the images used on this website.{" "}
+                Disclaimer: I do NOT own any of the images used on this website.
                 <br />
                 <br /> However, they are not STOCK images. <br /> I have added my
                 own designs to stock clothing images. <br />
                 <br /> If there are any concerns about copyright laws, please send
-                me an{" "}
+                me an
                 <a href="mailto:imveloxal@gmail.com" className="hone">
                   Email
                 </a>

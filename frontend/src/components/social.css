@@ -1,0 +1,76 @@
+*{
+    background-color: transparent;
+    color:white;
+    font-family:'Poppins', Courier, monospace;
+    margin:1%;
+    font-size: xx-large;
+    text-decoration: none;
+}
+
+body{
+    background-image: url("../images/pxfuel.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size:50vh;
+    background-color: rgb(128, 124, 124);
+    background-blend-mode: color-burn;
+    
+}
+
+.socials{
+    text-align: left;
+}
+
+.YouTube{
+    margin:5%;
+    text-align: left;
+}
+
+.Instagram{
+    
+    justify-content: center;
+    margin:5%;
+    float: center;
+}
+
+.Twitter{
+    margin:5%;
+}
+ 
+.Tiktok{
+    margin:5%;
+    text-shadow: 15px;
+    text-align: center;
+}
+
+
+
+iframe{
+    margin-top:5%;
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+}
+
+blockquote{
+   
+    margin-top:5%;
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+}
+
+.hone:hover{
+    color:blanchedalmond;
+    transition: fadeIn 1000ms;
+
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    } 
+    100%{
+        opacity: 100;
+    }
+}

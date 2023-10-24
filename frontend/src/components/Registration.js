@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Axios from "axios";
+import "./Register.css";
 
 export default function Register(props) {
   const [data, setData] = useState({
@@ -60,6 +61,7 @@ export default function Register(props) {
           }}
           value={data.username}
           type="text"
+          required
           placeholder="Enter Username"
         ></input>
         <input
@@ -68,6 +70,7 @@ export default function Register(props) {
           }}
           value={data.password}
           type="password"
+          required
           placeholder="Enter password"
         ></input>
         <input
@@ -76,6 +79,7 @@ export default function Register(props) {
           }}
           value={data.mail}
           type="email"
+          required
           placeholder="Enter mail"
         ></input>
         <input
@@ -84,6 +88,7 @@ export default function Register(props) {
           }}
           value={data.bio}
           placeholder="Enter Bio"
+          required
           type="text"
         ></input>
         <input

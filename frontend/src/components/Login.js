@@ -1,4 +1,5 @@
 import React, { useState} from "react";
+import { Outlet, Link } from "react-router-dom";
 import "./Login.css";
 import Axios from "axios";
 
@@ -46,10 +47,7 @@ export default function Login(props) {
       console.error(error);
    
     }
-    finally{
-      data.username.current.value ="";
-      data.password.current.value = "";
-    }
+    
   }
 
   return (
@@ -65,6 +63,7 @@ export default function Login(props) {
             onChange={(e) => {
               setData({...data,username:e.target.value});
             }}
+            required
             value={data.username}
             className="usernameval"
           />
@@ -72,18 +71,19 @@ export default function Login(props) {
           <input
             type="password"
             placeholder="Enter Password"
+            required
             onChange={(e) => {
               setData({...data,password:e.target.value});
             }}
             value={data.password}
             className="passwordval"
-            required=""
           />
           <br />
           <p>{response}</p>
           <button type="submit" style={{ width: "10vw", height: "10vh" }}>
             {loading===true? "Loading..." : "Login"}</button>
           <br />
+          <h1>Don't have an account? Click <Link to="/register">Here</Link> to Register</h1>
           </div>
       </form>
     </div>
