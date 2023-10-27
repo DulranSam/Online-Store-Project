@@ -1,5 +1,4 @@
 import React, { useState} from "react";
-import { Outlet, Link } from "react-router-dom";
 import "./Login.css";
 import Axios from "axios";
 
@@ -59,6 +58,7 @@ export default function Login(props) {
           <p>Username : </p>
           <input
             type="text"
+            ref="username"
             placeholder="Enter Username"
             onChange={(e) => {
               setData({...data,username:e.target.value});
@@ -72,6 +72,7 @@ export default function Login(props) {
             type="password"
             placeholder="Enter Password"
             required
+            ref="password"
             onChange={(e) => {
               setData({...data,password:e.target.value});
             }}
@@ -83,7 +84,7 @@ export default function Login(props) {
           <button type="submit" style={{ width: "10vw", height: "10vh" }}>
             {loading===true? "Loading..." : "Login"}</button>
           <br />
-          <h1>Don't have an account? Click <Link to="/register">Here</Link> to Register</h1>
+          <h1>Don't have an account? Click <a href="/register">Here</a> to Register</h1>
           </div>
       </form>
     </div>

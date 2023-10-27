@@ -68,7 +68,7 @@ input[text]{
 
 
 body{
-    background-image: url("../images/pika.jpeg");
+    background-image: url("../../public/pika.jpeg");
     background-color: rgb(128, 124, 124);
     background-blend-mode: color-burn;
     background-repeat: repeat;

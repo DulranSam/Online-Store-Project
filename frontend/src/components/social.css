@@ -8,7 +8,7 @@
 }
 
 body{
-    background-image: url("../images/pxfuel.jpg");
+    background-image: url("../../public/pxfuel.jpg");
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size:50vh;

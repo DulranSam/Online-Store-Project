@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import "./Main.css";
 
 export default function Main() {
@@ -25,7 +25,7 @@ export default function Main() {
                 </li>
               </ul>
             </nav>
-            <img src="../images/V.png" alt="v" className="vpng" />
+            <img src="V.png" alt="v" className="vpng" />
             <div className="Homedet">
               <h2>Welcome to Veloxal!</h2>
               <br />
@@ -49,39 +49,39 @@ export default function Main() {
               <div className="mainpr">
                 <div className="ita1">
                   <p>
-                    <a href="#">
+                    <a href="/tshirts">
                       <img
-                        src="../images/tshirt.png"
+                        src="tshirt.png"
                         alt="tshirt"
                         className="item1"
                       />
                     </a>
                   </p>
-                  <p>VX TShirt</p>
+                  <p>VX TShirts</p>
                 </div>
                 <br />
                 <div className="ita2">
-                  <a href="#">
+                  <a href="/hoodies">
                     <img
-                      src="../images/hoodie.png"
+                      src="hoodie.png"
                       alt="hoodie"
                       className="item2"
                     />
                   </a>
-                  <p>VX Hoodie</p>
+                  <p>VX Hoodies</p>
                 </div>
               </div>
               <div className="r2">
                 <div className="ita3">
-                  <a href="#">
-                    <img src="../images/company23.png" alt="" className="item3" />
+                  <a href="/shoes">
+                    <img src="./public/company23.png" alt="" className="item3" />
                   </a>
                   <p>Shoes</p>
                 </div>
                 <br />
                 <div className="ita4">
-                  <a href="#">
-                    <img src="../images/cases.png" alt="" className="item4" />
+                  <a href="/cases">
+                    <img src="./public/cases.png" alt="" className="item4" />
                   </a>
                   <p>Phone Cases</p>
                 </div>
@@ -106,32 +106,32 @@ export default function Main() {
                 <div className="icox">
                   <p>
                     <a href="https://www.youtube.com/@Veloxal">
-                      <img src="../images/yt.png" alt="" />
+                      <img src="./public/yt.png" alt="" />
                     </a>
                   </p>
                 </div>
                 <br />
                 <div className="icox1">
                   <a href="https://twitter.com/VeloxalYT">
-                    <img src="../images/twitter.png" alt="" />
+                    <img src="./public/twitter.png" alt="" />
                   </a>
                 </div>
                 <br />
                 <div className="icox2">
                   <a href="https://www.linkedin.com/in/dulran-samarasinghe-6258b9269/">
-                    <img src="../images/linkedin.png" alt="" />
+                    <img src="./public/linkedin.png" alt="" />
                   </a>
                 </div>
                 <br />
                 <div className="icox3">
                   <a href="https://www.tiktok.com/@veloxalyt">
-                    <img src="../images/tiktok.png" alt="" />
+                    <img src="./public/tiktok.png" alt="" />
                   </a>
                 </div>
                 <br />
                 <div className="icox4">
                   <a href="https://open.spotify.com/user/o61y4ehnaqgr0htyvpxpoda3o?si=2bd6cfd8fa1b4f95">
-                    <img src="../images/spotify.png" alt="" />
+                    <img src="./public/spotify.png" alt="" />
                   </a>
                 </div>
                 <br />

@@ -1872,3 +1872,6 @@
 2023	10	24	20:35:46	dd885662-fa58-4a0c-9213-71f61c9cae53	/register/login	POST	undefined
 2023	10	24	20:35:46	5f37b7ae-5a93-4b8a-b111-bd8817d8e7ac	/register/login	POST	undefined
 2023	10	24	20:35:46	f79476c2-58cb-4c7f-9ad9-1cb0bd5b2d01	/register/login	POST	undefined
+2023	10	24	20:39:53	51741911-3379-4b3b-8d31-968bc940a340	/register	GET	undefined
+2023	10	24	20:39:53	7deb7f4e-988f-47dd-84e1-6609e107ad05	/images/icons/gear.png	GET	undefined
+2023	10	24	20:39:53	9889bef5-63de-4eb7-a661-936cda28def1	/images/icons/gear.png	GET	undefined
