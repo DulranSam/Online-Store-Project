@@ -1,9 +1,9 @@
-const { ObjectId} = require("mongodb");
+const { ObjectId } = require("mongodb");
 const storeModel = require("../models/store");
 
-async function getItems(req,res) {
+async function getItems(req, res) {
   try {
-    const items = await storeModel.find().toArray();
+    const items = await storeModel.find();
     res.json(items);
   } catch (error) {
     console.log(error);
@@ -65,7 +65,5 @@ async function searchItems(req, res) {
       .json({ searchResults, nbHits: searchResults.length });
   }
 }
-
-
 
 module.exports = { getItems, updateItems, deleteItems, searchItems };

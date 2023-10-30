@@ -1,4 +1,4 @@
-const { ObjectId} = require("mongodb");
+const { ObjectId } = require("mongodb");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cookie = require("cookie-parser");
@@ -8,12 +8,11 @@ const accessTokenx = process.env.ACCESS_TOKEN;
 const refreshToken = process.env.REFRESH_TOKEN;
 
 async function getUsers(req, res) {
-  const users = await userModel.find().toArray();
+  const users = await userModel.find();
   res.json(users);
 }
 
 async function deleteUsers(req, res) {
-  
   const { id, password } = req.body;
 
   try {
@@ -43,7 +42,6 @@ async function deleteUsers(req, res) {
 }
 
 async function updateUsers(req, res) {
-  
   const { username, id } = req.body;
 
   if (!username || !id) {
@@ -68,8 +66,6 @@ async function updateUsers(req, res) {
 }
 
 async function Login(req, res) {
-  
-
   const { username, password } = req.body;
   if (!username || !password) {
     return res
@@ -85,8 +81,6 @@ async function Login(req, res) {
     } else {
       const match = bcrypt.compareSync(password, verify.password);
       if (match) {
-     
-      
         const accessToken = jwt.sign(
           {
             username: verify,
@@ -102,8 +96,13 @@ async function Login(req, res) {
           refreshToken,
           { expiresIn: "1d" }
         );
-        res.cookie("jwt",refreshTokenx,{httpOnly:true,maxAge:24*60*60*1000});
-        return res.status(200).json({Alert:`User ${username} logged in, Token ${accessToken}`})
+        res.cookie("jwt", refreshTokenx, {
+          httpOnly: true,
+          maxAge: 24 * 60 * 60 * 1000,
+        });
+        return res
+          .status(200)
+          .json({ Alert: `User ${username} logged in, Token ${accessToken}` });
       } else {
         return res.status(401).json({ Error: "Unauthorized" });
       }

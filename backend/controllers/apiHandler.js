@@ -85,6 +85,4 @@ async function getLangs(req, res) {
   }
 }
 
-
-
-module.exports = {translator, getLangs};
+module.exports = { translator, getLangs };
