@@ -1,1 +1,1 @@
-This is just the sample react project, it's NOWHERE near done. Stay tuned <3
+This is just the sample react project, it's NOWHERE near done. I'm doing this project as i'm learning React , Stay tuned <3

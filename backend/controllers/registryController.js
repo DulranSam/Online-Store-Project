@@ -1,29 +1,27 @@
-const { ObjectId, MongoClient } = require("mongodb");
+const { ObjectId} = require("mongodb");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cookie = require("cookie-parser");
+const userModel = require("../models/user");
 require("dotenv").config;
 const accessTokenx = process.env.ACCESS_TOKEN;
 const refreshToken = process.env.REFRESH_TOKEN;
-let db;
-const cluster = process.env.CLUSTER;
 
 async function getUsers(req, res) {
-  const collection = db.collection("users");
-  const users = await collection.find().toArray();
+  const users = await userModel.find().toArray();
   res.json(users);
 }
 
 async function deleteUsers(req, res) {
-  const collection = db.collection("users");
-  const { username, password } = req.body;
+  
+  const { id, password } = req.body;
 
   try {
-    if (!username || !password) {
-      return res.status(400).json({ Error: "No username or password found" });
+    if (!id || !password) {
+      return res.status(400).json({ Error: "No id or password found" });
     }
 
-    const user = await collection.findOne({ username: username });
+    const user = await userModel.findOne({ id: id });
 
     if (!user) {
       return res.status(404).json({ Error: "User not found" });
@@ -35,9 +33,9 @@ async function deleteUsers(req, res) {
       return res.status(400).json({ Error: "Invalid Password" });
     }
 
-    const del = await collection.findOneAndDelete({ username: username });
+    const del = await userModel.findOneAndDelete({ _id: id });
 
-    return res.status(200).json({ Alert: `User ${username} has been deleted` });
+    return res.status(200).json({ Alert: `User ${id} has been deleted` });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ Error: "Internal server error" });
@@ -45,7 +43,7 @@ async function deleteUsers(req, res) {
 }
 
 async function updateUsers(req, res) {
-  const collection = db.collection("users");
+  
   const { username, id } = req.body;
 
   if (!username || !id) {
@@ -56,7 +54,7 @@ async function updateUsers(req, res) {
     const filter = { _id: new ObjectId(id) };
     const update = { $set: { username: username } };
 
-    const result = await collection.updateOne(filter, update);
+    const result = await userModel.updateOne(filter, update);
 
     if (!result) {
       res.status(401).json({ Alert: "User not found" });
@@ -70,7 +68,7 @@ async function updateUsers(req, res) {
 }
 
 async function Login(req, res) {
-  const collection = db.collection("users");
+  
 
   const { username, password } = req.body;
   if (!username || !password) {
@@ -80,7 +78,7 @@ async function Login(req, res) {
   }
 
   try {
-    const verify = await collection.findOne({ username: username });
+    const verify = await userModel.findOne({ username: username });
 
     if (!verify) {
       return res.status(401).json({ Error: "Unauthorized" });
@@ -115,19 +113,5 @@ async function Login(req, res) {
     return res.status(500).json({ Error: "Internal Server Error" });
   }
 }
-
-async function Connect() {
-  try {
-    const client = new MongoClient(cluster);
-    await client.connect();
-    db = client.db();
-    console.log("Connected Data Verifiation");
-  } catch (error) {
-    console.error("Error connecting to Data Verification:", error);
-    process.exit(1);
-  }
-}
-
-Connect();
 
 module.exports = { getUsers, deleteUsers, Login, updateUsers };

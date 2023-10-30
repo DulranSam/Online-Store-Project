@@ -1,14 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { MongoClient} = require("mongodb");
 const path = require("path");
 const sharp = require("sharp");
 const multer = require("multer");
 const storeModel = require("../models/store");
 const dataController = require("../controllers/dataController");
-let db;
-
-const cluster = process.env.CLUSTER;
 
 const multerStore = multer.diskStorage({
   destination: path.join(__dirname, "public"),
@@ -67,18 +63,5 @@ router
 
   router.route("/search").post(dataController.searchItems);
 
-  async function Connect() {
-    try {
-      const client = new MongoClient(cluster);
-      await client.connect();
-      db = client.db();
-      
-    } catch (error) {
-      console.error("Error connecting to Data Verification:", error);
-      process.exit(1);
-    }
-  };
-
-  Connect();
 
 module.exports = router;

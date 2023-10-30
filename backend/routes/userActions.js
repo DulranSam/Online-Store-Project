@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const { MongoClient } = require("mongodb");
 const bcrypt = require("bcrypt");
 const path = require("path");
 const sharp = require("sharp");
@@ -9,9 +8,7 @@ const userData = require("../models/user");
 const jwt = require("jsonwebtoken");
 const verifyJWT = require("../middleware/verifyJWT");
 const registryProcess = require("../controllers/registryController");
-let db;
 require("dotenv").config;
-const cluster = process.env.CLUSTER;
 
 const multerStore = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -29,7 +26,6 @@ router
   .route("/")
   .get( registryProcess.getUsers)
   .post(upload.single("photo"), async (req, res) => {
-    const collection = db.collection("users");
     try {
       const { username, password, mail, bio, confirmpass } = req.body;
 
@@ -44,8 +40,8 @@ router
           .json({ Alert: `${password} is not the same as confirmed password` });
       }
 
-      const duplicate = await collection.findOne({ username });
-      const maildup = await collection.findOne({ mail });
+      const duplicate = await userData.findOne({ username });
+      const maildup = await userData.findOne({ mail });
 
       if (!duplicate && !maildup) {
         let photofilename = null;
@@ -103,18 +99,6 @@ router
 
 router.route("/login").post(registryProcess.Login);
 
-async function Connect() {
-  try {
-    const client = new MongoClient(cluster);
-    await client.connect();
-    db = client.db();
-    console.log("userActions connected to Database");
-  } catch (error) {
-    console.log("Error connecting to MongoDB:", error);
-    process.exit(1);
-  }
-}
 
-Connect();
 
 module.exports = router;

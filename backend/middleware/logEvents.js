@@ -25,7 +25,9 @@ async function Log(req, res, next) {
   });
 
   try {
-    myEmitter.emit("log", `${req.url}\t${req.method}\t${req.headers.origin}`, "allworkingLogs.txt");
+    myEmitter.emit("log", `${req.url}\t${req.method}\t${req.headers.origin}`, "allworkingLogs.txt",(err)=>{
+      myEmitter.emit("log",`${err.name}\t${err.message}`,"errLogs.txt")
+    });
   } catch (error) {
     console.error(error);
   }

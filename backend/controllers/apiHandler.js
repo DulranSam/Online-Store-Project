@@ -1,7 +1,4 @@
 const Axios = require("axios");
-require("dotenv").config();
-const API = process.env.API_KEY;
-const HOST = process.env.API_HOST;
 
 /* Trial Period has EXPIRED (Yet to find a FREE substitue API)
 async function conversion(req, res) {

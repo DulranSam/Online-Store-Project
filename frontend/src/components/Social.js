@@ -1,11 +1,6 @@
 import "./social.css";
 import { Outlet, Link } from "react-router-dom";
 
-
-
-
-
-
 export default function Social(){
     return(
         <div className="container">
