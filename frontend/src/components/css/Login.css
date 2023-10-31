@@ -1,0 +1,96 @@
+*{  
+    
+    background-color: transparent;
+    font-family: 'Poppins', Courier, monospace;
+    color:white;
+    text-shadow: darkgray;
+    font-size:xx-large;
+    
+}
+
+
+
+.login{
+    margin:3%;
+    text-align: center;
+    
+    justify-content: center;
+    align-items: center;
+ 
+}
+
+.loginsub{
+
+    height:3rem;
+    width: 5rem;
+    margin:5%;
+    font-size: x-large;
+    border: 3px solid rgb(8, 255, 8);
+    border-radius: 20px;
+}
+
+.loginsub:hover{
+    animation: fadeIn 1s;
+    color:pink;
+    
+}
+
+.usernameval,.passwordval{
+    border-radius: 20px;
+    margin:2%;
+    width: 20vw;
+    height:5vh;
+    padding:5%;
+    border:4px solid rgb(98, 189, 12);
+    color:rgb(0, 255, 225);
+}
+
+.fields{
+    border-radius: 5% white; 
+ 
+   
+    box-sizing: border-box;
+    
+    font-size: xx-large;
+}
+
+.fieldsx{
+    height: 40px; 
+    padding:5%;
+}
+
+input[text]{
+    width: 40vw;
+    height: 80vh;
+    display:flex;
+    border:12px solid rgb(47, 158, 255);
+}
+
+
+body{
+    background-image: url("../components/images/pika.jpeg");
+    background-color: rgb(128, 124, 124);
+    background-blend-mode: color-burn;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-size: cover;
+   
+}
+
+
+
+.hone:hover{
+    color:blanchedalmond;
+    transition: fadeIn;
+   
+
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    } 
+    100%{
+        opacity: 100;
+    }
+}

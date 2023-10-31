@@ -18,15 +18,13 @@ router
   .route("/")
   .get(dataController.getItems)
   .post(upload.single("photo"), async (req, res) => {
-    const collection = db.collection("items");
     try {
-
       const { title, description, quantity, extra } = req.body;
       if (!title || !description || !quantity)
         return res
           .status(400)
           .json({ Error: "Please enter title , description and quantity" });
-      const duplicate = await collection.findOne({
+      const duplicate = await storeModel.findOne({
         title: title,
       });
       if (duplicate) {
@@ -61,7 +59,6 @@ router
   .put(dataController.updateItems)
   .delete(dataController.deleteItems);
 
-  router.route("/search").post(dataController.searchItems);
-
+router.route("/search").post(dataController.searchItems);
 
 module.exports = router;

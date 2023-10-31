@@ -14,6 +14,8 @@ const verifyData = require("./routes/verifyData");
 const { Log } = require("./middleware/logEvents");
 const payment = require("./routes/payment");
 
+
+
 app.use(express.json());
 app.use(
   cors({
@@ -28,6 +30,12 @@ if (!fs.existsSync(path.join(__dirname, "public"))) {
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(Log);
+
+
+
+
+
+
 app.use("/register", userActions);
 app.use("/pay",payment);
 app.use("/verify", verifyData);

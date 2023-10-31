@@ -17,11 +17,12 @@ export default function App() {
         <Route path="/" element={<Main></Main>} />
         <Route path="/social" element={<Social></Social>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
-        <Route path="/register" element={<Register></Register>}></Route>
+        <Route path="/login/register" element={<Register></Register>}></Route>
         <Route path="/tshirts" element={<TShirts></TShirts>}></Route>
         <Route path="/hoodies" element={<Hoodies></Hoodies>}></Route>
         <Route path="/cases" element={<Cases></Cases>}></Route>
         <Route path="/shoes" element={<Shoes></Shoes>}></Route>
+        <Route path="/more" element={<more></more>} />
       </Routes>
     </BrowserRouter>
   );

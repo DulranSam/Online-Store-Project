@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import "./Register.css";
+import "./css/Register.css";
 
 export default function Register() {
   const [data, setData] = useState({
@@ -8,7 +8,7 @@ export default function Register() {
     password: "",
     mail: "",
     bio: "",
-    photo: null, 
+    photo: null,
   });
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
@@ -58,34 +58,33 @@ export default function Register() {
       <form onSubmit={Register}>
         <h1>Register</h1>
         <input
-          onChange={(e) => setData((prevData) => ({ ...prevData, username: e.target.value }))}
+          onChange={(e) => setData({ ...data, username: e.target.value })}
           value={data.username}
           type="text"
           required
           placeholder="Enter Username"
         />
         <input
-          onChange={(e) => setData((prevData) => ({ ...prevData, password: e.target.value }))}
+          onChange={(e) => setData({ ...data, password: e.target.value })}
           value={data.password}
           type="password"
           required
           placeholder="Enter password"
         />
         <input
-          onChange={(e) => setData((prevData) => ({ ...prevData, mail: e.target.value }))}
+          onChange={(e) => setData({ ...data, mail: e.target.value })}
           value={data.mail}
           type="email"
           required
           placeholder="Enter mail"
         />
         <input
-          onChange={(e) => setData((prevData) => ({ ...prevData, bio: e.target.value }))}
+          onChange={(e) => setData({ ...data, bio: e.target.value })}
           value={data.bio}
           placeholder="Enter Bio"
-          required
         />
         <input
-          onChange={(e) => setData((prevData) => ({ ...prevData, photo: e.target.files[0] }))}
+          onChange={(e) => setData({ ...data, photo: e.target.files[0] })}
           type="file"
         />
         <p>{response}</p>

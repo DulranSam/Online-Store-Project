@@ -55,7 +55,7 @@ async function searchItems(req, res) {
     return res.status(400).json({ Error: "No title found" });
   }
 
-  const searchResults = await storeModel.find({ title: title }).toArray();
+  const searchResults = await storeModel.find({ title: title });
 
   if (searchResults.length === 0) {
     return res.status(404).json({ Error: "Unable to find" });

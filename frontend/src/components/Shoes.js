@@ -1,4 +1,4 @@
-import "./Shoes.css";
+
 export default function Shoes(){
     return(
         <div className="container">

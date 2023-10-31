@@ -38,7 +38,7 @@
   
   
   .upper{
-    background-image: url("../../public/main.jpg");
+    background-image: url("../components/images/main.jpg");
     background-blend-mode: darken;
     background-repeat: no-repeat;
     background-size: cover;
@@ -46,7 +46,7 @@
   }
   
   .lower{
-    background-image: url("../../public/main2.jpg");
+    background-image: url("../components/images/main2.jpg");
     background-blend-mode: darken;
     background-repeat: no-repeat;
     background-size: cover;
@@ -106,7 +106,7 @@
   .gallery{
    
     padding:10%;
-    background-image: url("../../public/alucard-hellsing.png");
+    background-image: url("../components/images/alucard-hellsing.png");
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 15px;
@@ -218,7 +218,7 @@
   
   .mainhome{
     
-    background-image: url("../../public/main2.jpg");
+    background-image: url("../components/images/main2.jpg");
     background-blend-mode: darken;
     text-decoration: none;
     background-repeat: repeat;
@@ -365,7 +365,7 @@
     margin: 1%;
     padding:5%;
     border:12px solid pink;
-    background-image: url("../../public/cat.jpg");
+    background-image: url("../components/images/cat.jpg");
     background-position: fixed;
     background-attachment: scroll;
     background-size: contain;
@@ -377,7 +377,7 @@
   
   
   .contactus{
-    background-image: url("../../public/dark2.jpg");
+    background-image: url("../components/images/dark2.jpg");
     background-position: fixed;
     border:12px solid coral;
     background-color:#5f5858;

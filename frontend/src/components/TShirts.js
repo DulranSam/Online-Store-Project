@@ -1,7 +1,7 @@
 export default function TShirts(){
     return(
         <div className="container">
-        <h1>Hello</h1>
+        <h1>TShirts</h1>
         
         </div>
     )

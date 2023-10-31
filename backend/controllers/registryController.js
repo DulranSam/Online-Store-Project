@@ -102,7 +102,7 @@ async function Login(req, res) {
         });
         return res
           .status(200)
-          .json({ Alert: `User ${username} logged in, Token ${accessToken}` });
+          .json({ Alert: `User ${username} logged in` });
       } else {
         return res.status(401).json({ Error: "Unauthorized" });
       }
