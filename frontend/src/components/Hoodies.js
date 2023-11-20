@@ -4,9 +4,12 @@ export default function Hoodies() {
   const [hoodieQuantity, setHoodieQuantity] = useState(1);
   const [tshirtQuantity, setTshirtQuantity] = useState(1);
   const [caseQuantity, setCaseQuantity] = useState(1);
+  const [bought, setBought] = useState(0);
   const [pricing, setPricing] = useState(0);
 
   function addToCart(price, quantity, setQuantity) {
+    const bought = setBought(hoodieQuantity + tshirtQuantity + caseQuantity);
+    localStorage.setItem("itemsbought", bought);
     setPricing((prevPrice) => prevPrice + price * quantity);
     setQuantity(quantity);
   }
@@ -15,7 +18,7 @@ export default function Hoodies() {
     console.log(`The final price is $${pricing}`);
     alert(`Order placed. Your total is $${pricing}`);
     localStorage.setItem("totalbill", pricing);
-    // window.location.href = "http://localhost:3000/confirmedorder";
+    window.location.href = "http://localhost:3000/confirmedorder";
   }
 
   function CancelOrder() {

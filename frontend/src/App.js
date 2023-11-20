@@ -7,12 +7,17 @@ import TShirts from "./components/TShirts";
 import Hoodies from "./components/Hoodies";
 import Cases from "./components/Cases";
 import Shoes from "./components/Shoes";
+import Confirmedorder from "./components/ConfirmedOrder";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main></Main>} />
+        <Route
+          path="/confirmedorder"
+          element={<Confirmedorder></Confirmedorder>}
+        />
         <Route path="/social" element={<Social></Social>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/login/register" element={<Register></Register>}></Route>
