@@ -1,0 +1,1 @@
+{"ast":null,"code":"'use client';\n\nimport { ChakraProvider } from \"./chunk-3DDHO3UN.mjs\";\nexport { ChakraProvider };","map":{"version":3,"names":[],"sources":[],"sourcesContent":["'use client'\nimport {\n  ChakraProvider\n} from \"./chunk-3DDHO3UN.mjs\";\nexport {\n  ChakraProvider\n};\n"],"mappings":""},"metadata":{},"sourceType":"module","externalDependencies":[]}

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import Axios from "axios";
+//import "./register.css";
 
 export default function Login(props) {
-  const [data, setData] = useState({
-    username: "",
-    password: "",
-  });
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -14,30 +13,27 @@ export default function Login(props) {
 
     try {
       setLoading(true);
-      const formData = new FormData();
-      formData.append("username", data.username);
-      formData.append("password", data.password);
 
-      const response = await Axios.post("http://localhost:8000/register/login", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await Axios.post(
+        "http://localhost:8000/register/login",
+        { username: username, password: password }
+      );
 
       if (response.status === 200) {
-        alert(`Welcome back ${data.username}`);
+        alert(`Welcome back ${username}`);
         setResponse("Authorized");
       } else if (response.status === 401) {
-        alert(`${data.username} Unauthorized`);
+        alert(`${username} Unauthorized`);
         setResponse("Unauthorized");
       } else if (response.status === 400) {
         setResponse("Username and password missing");
       } else {
         setResponse("Server Error");
       }
-      setLoading(false);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -52,10 +48,10 @@ export default function Login(props) {
               type="text"
               placeholder="Enter Username"
               onChange={(e) => {
-                setData({ ...data, username: e.target.value });
+                setUsername(e.target.value);
               }}
               required
-              value={data.username}
+              value={username}
               className="usernameval"
             />
             <p>Password : </p>
@@ -64,9 +60,9 @@ export default function Login(props) {
               placeholder="Enter Password"
               required
               onChange={(e) => {
-                setData({ ...data, password: e.target.value });
+                setPassword(e.target.value);
               }}
-              value={data.password}
+              value={password}
               className="passwordval"
             />
             <br />
@@ -76,7 +72,8 @@ export default function Login(props) {
             </button>
             <br />
             <h1>
-              Don't have an account? Click <a href="/register">Here</a> to Register
+              Don't have an account? Click <a href="/register">Here</a> to
+              Register
             </h1>
           </div>
         </form>

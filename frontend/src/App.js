@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./components/Main";
 import Social from "./components/Social";
 import Login from "./components/Login";
@@ -8,9 +8,7 @@ import Hoodies from "./components/Hoodies";
 import Cases from "./components/Cases";
 import Shoes from "./components/Shoes";
 
-
 export default function App() {
-  
   return (
     <BrowserRouter>
       <Routes>
@@ -27,7 +25,3 @@ export default function App() {
     </BrowserRouter>
   );
 }
-
-
-
-

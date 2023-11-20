@@ -1,0 +1,1 @@
+{"ast":null,"code":"'use client';\n\nimport { Switch } from \"./chunk-VTV6N5LE.mjs\";\nexport { Switch };","map":{"version":3,"names":[],"sources":[],"sourcesContent":["'use client'\nimport {\n  Switch\n} from \"./chunk-VTV6N5LE.mjs\";\nexport {\n  Switch\n};\n"],"mappings":""},"metadata":{},"sourceType":"module","externalDependencies":[]}

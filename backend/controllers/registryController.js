@@ -69,7 +69,7 @@ async function Login(req, res) {
   const { username, password } = req.body;
   if (!username || !password) {
     return res
-      .status(400)
+      .sendStatus(400)
       .json({ Error: "Username and password are required" });
   }
 
@@ -77,39 +77,36 @@ async function Login(req, res) {
     const verify = await userModel.findOne({ username: username });
 
     if (!verify) {
-      return res.status(401).json({ Error: "Unauthorized" });
+      return res.sendStatus(401).json({ Error: "Unauthorized" });
     } else {
       const match = bcrypt.compareSync(password, verify.password);
       if (match) {
-        const accessToken = jwt.sign(
-          {
-            username: verify,
-          },
-          accessTokenx,
-          { expiresIn: "30s" }
-        );
+        // const accessToken = jwt.sign(
+        //   {
+        //     username: verify,
+        //   },
+        //   accessTokenx,
+        //   { expiresIn: "30s" }
+        // );
 
-        const refreshTokenx = jwt.sign(
-          {
-            username: verify,
-          },
-          refreshToken,
-          { expiresIn: "1d" }
-        );
-        res.cookie("jwt", refreshTokenx, {
-          httpOnly: true,
-          maxAge: 24 * 60 * 60 * 1000,
+        // const refreshTokenx = jwt.sign(
+        //   {
+        //     username: verify,
+        //   },
+        //   refreshToken,
+        //   { expiresIn: "1d" }
+        // );
+
+        return res.sendStatus(200).json({
+          Alert: `User ${username} logged in`,
         });
-        return res
-          .status(200)
-          .json({ Alert: `User ${username} logged in` });
       } else {
-        return res.status(401).json({ Error: "Unauthorized" });
+        return res.sendStatus(401).json({ Error: "Unauthorized" });
       }
     }
   } catch (error) {
     console.error("Error in login:", error);
-    return res.status(500).json({ Error: "Internal Server Error" });
+    return res.sendStatus(500).json({ Error: "Internal Server Error" });
   }
 }
 

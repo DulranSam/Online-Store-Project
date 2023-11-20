@@ -13,15 +13,11 @@ const userActions = require("./routes/userActions");
 const verifyData = require("./routes/verifyData");
 const { Log } = require("./middleware/logEvents");
 const payment = require("./routes/payment");
-
-
+const storeActions = require("./routes/storeActions");
 
 app.use(express.json());
-app.use(
-  cors({
-    origin:"http://192.168.1.13:3000" || "http://localhost:3000",
-  }) //for react proj
-);
+app.use(cors());
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 if (!fs.existsSync(path.join(__dirname, "public"))) {
@@ -30,16 +26,11 @@ if (!fs.existsSync(path.join(__dirname, "public"))) {
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(Log);
-
-
-
-
-
-
 app.use("/register", userActions);
-app.use("/pay",payment);
+app.use("/pay", payment);
 app.use("/verify", verifyData);
 app.use("/api", apiX);
+app.use("/store", storeActions);
 
 app.use("*", async (req, res) => {
   res.status(404);

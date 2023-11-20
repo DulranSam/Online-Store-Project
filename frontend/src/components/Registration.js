@@ -1,55 +1,47 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import "./css/Register.css";
+import styles from "./register.module.css";
 
 export default function Register() {
-  const [data, setData] = useState({
-    username: "",
-    password: "",
-    mail: "",
-    bio: "",
-    photo: null,
-  });
-  const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [bio, setBio] = useState("");
+  const [confirm, setConfirm] = useState("");
+  const [mail, setMail] = useState("");
+  const [status, setStatus] = useState("");
+  const [photo, setPhoto] = useState("");
 
   async function Register(e) {
     e.preventDefault();
-    if (response.length !== 0) {
-      setResponse("");
-    }
     try {
+      setStatus("");
       setLoading(true);
-      const datax = new FormData();
-      datax.append("username", data.username);
-      datax.append("password", data.password);
-      datax.append("mail", data.mail);
-      datax.append("bio", data.bio);
-      if (data.photo) {
-        datax.append("photo", data.photo);
-      }
 
-      const r = await Axios.post("http://localhost:8000/register", datax, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+      const response = await Axios.post("http://localhost:8000/register", {
+        username: username,
+        password: password,
+        mail: mail,
+        confirmpass: confirm,
+        photo: photo,
       });
 
-      if (r.status === 201) {
-        setResponse("User created");
-      } else if (r.status === 409) {
-        setResponse("User already exists");
-      } else if (r.status === 400) {
-        setResponse("Required credentials not filled");
+      if (response.status === 201) {
+        alert("");
+        setStatus("User Created");
+      } else if (response.status === 409) {
+        setStatus("Username or email already taken");
+      } else if (response.status === 400) {
+        setStatus("Error");
       } else {
-        setResponse("Internal Server Error");
+        setStatus("Error!");
       }
-
+    } catch (err) {
+      console.error(err);
+      setStatus("Error occurred during registration");
+    } finally {
       setLoading(false);
-    } catch (error) {
-      console.error(error);
-      setResponse("Error occurred. Please try again.");
-      setLoading(false);
+      console.log("Execution Complete!");
     }
   }
 
@@ -58,43 +50,46 @@ export default function Register() {
       <form onSubmit={Register}>
         <h1>Register</h1>
         <input
-          onChange={(e) => setData({ ...data, username: e.target.value })}
-          value={data.username}
+          style={styles.usernameval}
+          onChange={(e) => setUsername(e.target.value)}
+          value={username}
           type="text"
           required
           placeholder="Enter Username"
         />
         <input
-          onChange={(e) => setData({ ...data, password: e.target.value })}
-          value={data.password}
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
           type="password"
           required
           placeholder="Enter password"
         />
         <input
-          onChange={(e) => setData({ ...data, mail: e.target.value })}
-          value={data.mail}
+          onChange={(e) => setConfirm(e.target.value)}
+          placeholder="Enter Confirm Password"
+          value={confirm}
+          type="password"
+          required
+        />
+        <input
+          onChange={(e) => setMail(e.target.value)}
+          value={mail}
           type="email"
           required
           placeholder="Enter mail"
         />
         <input
-          onChange={(e) => setData({ ...data, bio: e.target.value })}
-          value={data.bio}
+          onChange={(e) => setBio(e.target.value)}
+          value={bio}
           placeholder="Enter Bio"
         />
         <input
-          onChange={(e) => setData({ ...data, photo: e.target.files[0] })}
+          onChange={(e) => setPhoto(e.target.files[0])}
           type="file"
+          value={photo}
         />
-        <p>{response}</p>
-        <button
-          type="submit"
-          style={{ width: "10vw", height: "10vh" }}
-          disabled={loading}
-        >
-          {loading ? "Loading..." : "Register"}
-        </button>
+        <p>{status}</p>
+        <button type="submit">{loading ? "Loading..." : "Create User"}</button>
       </form>
     </div>
   );

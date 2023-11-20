@@ -5,8 +5,7 @@ const path = require("path");
 const sharp = require("sharp");
 const multer = require("multer");
 const userData = require("../models/user");
-const jwt = require("jsonwebtoken");
-const verifyJWT = require("../middleware/verifyJWT");
+const {verifyJWT} = require("../middleware/verifyJWT");
 const registryProcess = require("../controllers/registryController");
 require("dotenv").config;
 
@@ -24,7 +23,7 @@ const upload = multer({ storage: multerStore });
 
 router
   .route("/")
-  .get( registryProcess.getUsers)
+  .get(registryProcess.getUsers)
   .post(upload.single("photo"), async (req, res) => {
     try {
       const { username, password, mail, bio, confirmpass } = req.body;

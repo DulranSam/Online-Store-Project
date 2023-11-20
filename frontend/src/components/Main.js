@@ -1,36 +1,27 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState,useRef } from "react";
-import "./Main.css";
-import emailjs from "@emailjs/browser";
+import { useEffect, useState, useRef } from "react";
+//import "./Main.css";
+import emailjs from "emailjs-com";
 
 export default function Main() {
   const [time, setTime] = useState("");
-  const [loading,setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
   const emailRef = useRef();
   const inquiryRef = useRef();
 
   useEffect(() => {
-
-    function Time() {
-      const time = Date.now();
-      if (time > 12) {
-        setTime("Evening");
-      } else if (time > 4) {
-        setTime("Evening");
-      } else {
-        setTime("Morning");
-      }
+    const currentTime = new Date().getHours();
+    if (currentTime >= 12) {
+      setTime("Evening");
+    } else if (currentTime >= 4) {
+      setTime("Afternoon");
+    } else {
+      setTime("Morning");
     }
-    Time();
-   
-  });
+  }, []);
 
- 
-
-
- 
   useEffect(() => emailjs.init("jQgti3TGAJsQtelIY"), []);
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const serviceId = "service_cg40vyf";
@@ -38,8 +29,8 @@ export default function Main() {
     try {
       setLoading(true);
       await emailjs.send(serviceId, templateId, {
-       inquiry: inquiryRef.current.value,
-        recipient: emailRef.current.value
+        inquiry: inquiryRef.current.value,
+        recipient: emailRef.current.value,
       });
       alert("Email Sent , Thank You!");
     } catch (error) {
@@ -49,17 +40,17 @@ export default function Main() {
     }
   };
 
- 
+  useEffect(() => {
+    function lemon() {}
+  }, []);
 
   return (
     <div className="main" id="verytop">
       <div className="Home">
-      
         <div className="upper">
           <nav className="navbar">
             <ul>
               <li>
-              
                 <Link to="/social">Social</Link>
               </li>
               <li>
@@ -76,12 +67,12 @@ export default function Main() {
               </li>
             </ul>
           </nav>
-          <img src="V.png" alt="v" className="vpng" />
+          <img src="images/V.png" alt="v" className="vpng" />
           <br></br>
           <div className="Homedet">
-          <h1>Good {time}!</h1>
-            <h2>Welcome to Veloxal!</h2> 
-          
+            <h1>Good {time}!</h1>
+            <h2>Welcome to Veloxal!</h2>
+
             <br />
           </div>
         </div>
@@ -103,24 +94,24 @@ export default function Main() {
             <div className="mainpr">
               <a className="ita1" href="/tshirts">
                 <p>
-                  <img src="tshirt.png" alt="tshirt" className="item1" />
+                  <img src="images/tshirt.png" alt="tshirt" className="item1" />
                 </p>
                 <p>VX TShirts</p>
               </a>
               <br />
               <a className="ita2" href="/hoodies">
-                <img src="hoodie.png" alt="hoodie" className="item2" />
+                <img src="images/hoodie.png" alt="hoodie" className="item2" />
                 <p>VX Hoodies</p>
               </a>
             </div>
             <div className="r2">
               <a className="ita3" href="/shoes">
-                <img src="./images/company23.png" alt="" className="item3" />
+                <img src="images/company23.png" alt="" className="item3" />
                 <p>Shoes</p>
               </a>
               <br />
               <a className="ita4" href="/cases">
-                <img src="./images/cases.png" alt="" className="item4" />
+                <img src="images/cases.png" alt="" className="item4" />
                 <p>Phone Cases</p>
               </a>
             </div>
@@ -146,32 +137,32 @@ export default function Main() {
               <div className="icox">
                 <p>
                   <a href="https://www.youtube.com/@Veloxal">
-                    <img src="./images/yt.png" alt="" />
+                    <img src="images/yt.png" alt="" />
                   </a>
                 </p>
               </div>
               <br />
               <div className="icox1">
                 <a href="https://twitter.com/VeloxalYT">
-                  <img src="./images/twitter.png" alt="" />
+                  <img src="images/twitter.png" alt="" />
                 </a>
               </div>
               <br />
               <div className="icox2">
                 <a href="https://www.linkedin.com/in/dulran-samarasinghe-6258b9269/">
-                  <img src="./images/linkedin.png" alt="" />
+                  <img src="images/linkedin.png" alt="" />
                 </a>
               </div>
               <br />
               <div className="icox3">
                 <a href="https://www.tiktok.com/@veloxalyt">
-                  <img src="./images/tiktok.png" alt="" />
+                  <img src="images/tiktok.png" alt="" />
                 </a>
               </div>
               <br />
               <div className="icox4">
                 <a href="https://open.spotify.com/user/o61y4ehnaqgr0htyvpxpoda3o?si=2bd6cfd8fa1b4f95">
-                  <img src="./images/spotify.png" alt="" />
+                  <img src="images/spotify.png" alt="" />
                 </a>
               </div>
               <br />
