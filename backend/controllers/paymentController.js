@@ -2,7 +2,8 @@ const bcrypt = require("bcrypt");
 const paymentModel = require("../models/payment");
 
 async function getPayments(req, res) {
-  res.json({ Alert: "Payment Route" });
+   const bankDetails = await paymentModel.find();
+  res.json(bankDetails);
 }
 
 async function createPayment(req, res) {
