@@ -16,7 +16,7 @@
     "nodemailer": "^6.9.6",
     "nodemon": "^3.0.1",
     "now-paywall": "^0.3.0",
-    "openai": "^4.0.0",
+    "openai": "^4.12.4",
     "sharp": "^0.32.6",
     "uuid": "^9.0.1"
   },
